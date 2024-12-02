@@ -1,0 +1,144 @@
+/* Import Google font - Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+.container1 {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  padding: 30px;
+  width: 100%;
+
+  position: relative;
+}
+
+.weather-input {
+  width: 30%;
+}
+.weather-input input {
+  height: 46px;
+  width: 100%;
+  outline: none;
+  font-size: 1.07rem;
+  padding: 0 17px;
+  margin: 10px 0 20px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: #ccc;
+}
+.weather-input input:focus {
+  padding: 0 16px;
+  border: 2px solid #774797;
+}
+.weather-input .separator {
+  height: 1px;
+  width: 100%;
+  margin: 30px 0;
+  background: #bbbbbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-input .separator2 {
+  height: 1px;
+  width: 100%;
+  margin: 30px 0;
+  background: #bbbbbb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-input .separator::before {
+  content: "or";
+  color: #3d3549;
+  font-size: 1.18rem;
+  padding: 0 15px;
+  margin-top: -4px;
+  background: #8b8589;
+  border-radius: 90%;
+}
+h3 {
+  color: white;
+}
+.weather-input button {
+  width: 100%;
+  padding: 10px 0;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  color: #afaeb1;
+  background: #35323a;
+  transition: 0.2s ease;
+}
+.weather-input .search-btn:hover {
+  background: #3d3549;
+}
+.weather-input .reset-btn {
+  background: #521796;
+  color: rgb(219, 210, 210);
+}
+.weather-input .location-btn:hover {
+  background: #5c636a;
+}
+.weather-data {
+  width: 70%;
+  height: 100%;
+}
+.weather-data .current-weather {
+  color: #fff;
+  background: #1d1c1f;
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+table,
+thead,
+th,
+tr,
+tbody,
+td {
+  background-color: #1d1c1f;
+  color: rgb(202, 202, 202);
+}
+.cc {
+  color: rgb(162, 134, 177);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+@media (max-width: 1400px) {
+  .weather-data .current-weather {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 950px) {
+  .weather-input {
+    width: 350px;
+  }
+  .weather-data {
+    width: 550px;
+  }
+}
+@media (max-width: 750px) {
+  .container1 {
+    flex-wrap: wrap;
+    padding: 15px;
+  }
+  .weather-input,
+  .weather-data {
+    width: 100%;
+  }
+}
+alert {
+  width: 100%;
+}

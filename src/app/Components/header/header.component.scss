@@ -1,0 +1,34 @@
+/* Navbar styles */
+
+.container {
+  display: flex;
+  justify-content: space-between; /* Aligns items at the ends */
+  align-items: center; /* Centers items vertically */
+}
+
+.navbar-brand {
+  font-size: 1.5rem; /* Adjusted font size */
+  color: rgb(106, 85, 116); /* Brand color */
+  font-weight: bold;
+  text-decoration: none; /* Removing underline */
+  flex-grow: 1; /* Allows the brand to take available space and center it */
+  text-align: center; /* Ensures the text is centered */
+}
+
+.btn {
+  right: 0;
+  float: right;
+  color: rgb(202, 197, 197);
+  text-decoration: none;
+  font-size: 1rem; /* Font size for links */
+  background-color: #521796;
+}
+
+.btn:hover {
+  color: #f0f0f0; /* Light color on hover */
+}
+
+.router-link-active {
+  font-weight: bold; /* Makes active link bold */
+  color: #ffffff; /* Change color for active state */
+}

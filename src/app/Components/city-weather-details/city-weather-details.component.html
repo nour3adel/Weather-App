@@ -1,0 +1,103 @@
+<div
+  *ngIf="
+    cityWeather && cityWeather.forecast && cityWeather.forecast.length > 0;
+    else noForecast
+  "
+>
+  <div class="container1">
+    <div class="weather-input">
+      <input class="city-input" type="date" [(ngModel)]="selectedDate" />
+      <button class="search-btn" (click)="filterByDate()">
+        Search By Date
+      </button>
+      <div class="separator2"></div>
+      <!-- Toggle Unit Button -->
+      <button class="location-btn" (click)="toggleUnit()">
+        Toggle Unit (°{{ temperatureUnit }})
+      </button>
+      <div class="separator2"></div>
+
+      <button (click)="resetFilters()" class="reset-btn">Reset</button>
+    </div>
+    <div class="weather-data">
+      <div
+        class="current-weather"
+        [appBackGroundImage]="latestForecast?.temperatureCelsius"
+      >
+        <!-- Error message -->
+
+        <div class="desc">
+          <h2>{{ cityWeather.city }} ( {{ latestForecast?.date }} )</h2>
+          <h6>
+            Temperature
+
+            {{
+              temperatureUnit === "C"
+                ? latestForecast?.temperatureCelsius
+                : latestForecast?.temperatureFahrenheit
+            }}° {{ temperatureUnit }}
+          </h6>
+          <h6>
+            Temperature Using Pipe:
+            {{
+              latestForecast?.temperatureCelsius ?? 0
+                | temperatureConversion : temperatureUnit
+            }}° {{ temperatureUnit }}
+          </h6>
+
+          <h6>Humidity: {{ latestForecast?.humidity }}%</h6>
+        </div>
+        <div class="icon1">
+          <img
+            [appWeatherIcon]="latestForecast?.temperatureCelsius"
+            alt="Weather Icon"
+          />
+        </div>
+      </div>
+      <div class="days-forecast">
+        <h2>All Days Forecast</h2>
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger text-center"
+          style="width: 100%; margin: 0 auto"
+        >
+          {{ errorMessage }}
+        </div>
+        <ul *ngIf="!errorMessage" class="weather-cards">
+          <li
+            class="card"
+            *ngFor="let forecast of filteredForecast; trackBy: trackByDate"
+          >
+            <h3>( {{ forecast.date }} )</h3>
+            <h6>
+              Temp:
+              {{
+                temperatureUnit === "C"
+                  ? forecast.temperatureCelsius
+                  : forecast.temperatureFahrenheit
+              }}° {{ temperatureUnit }}
+            </h6>
+            <h6>
+              Temp Using Pipe:
+              {{
+                forecast?.temperatureCelsius ?? 0
+                  | temperatureConversion : temperatureUnit
+              }}° {{ temperatureUnit }}
+            </h6>
+            <h6>Humidity: {{ forecast.humidity }}%</h6>
+            <div class="icon1">
+              <img
+                [appWeatherIcon]="forecast.temperatureCelsius"
+                alt="Weather Icon"
+              />
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Fallback template for no forecast data -->
+<ng-template #noForecast>
+  <p>No forecast data available for this city.</p>
+</ng-template>

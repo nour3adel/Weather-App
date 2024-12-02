@@ -1,0 +1,24 @@
+.custom-bg {
+  background-color: #39373a;
+}
+
+.custom-btn:hover {
+  background-color: #f3e8ff !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+@media (prefers-color-scheme: dark) {
+  .custom-bg {
+    background-color: #1d1c1f;
+    color: white !important;
+  }
+
+  .custom-btn {
+    background-color: #4e3f61 !important;
+    color: white !important;
+  }
+
+  .custom-btn:hover {
+    background-color: #634b60 !important;
+  }
+}

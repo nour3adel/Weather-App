@@ -1,0 +1,67 @@
+<div>
+  <div class="container1">
+    <div class="weather-input">
+      <input
+        class="city-input"
+        type="text"
+        [(ngModel)]="cityID"
+        placeholder="Enter City ID"
+      />
+
+      <button class="search-btn" (click)="searchByID()">Search By ID</button>
+      <div class="separator"></div>
+
+      <input
+        class="city-input"
+        type="text"
+        [(ngModel)]="cityName"
+        placeholder="Enter City Name"
+      />
+
+      <button class="search-btn" (click)="searchByName()">
+        Search By Name
+      </button>
+
+      <div class="separator2"></div>
+
+      <button (click)="resetFilters()" class="reset-btn">Reset</button>
+    </div>
+    <div class="weather-data">
+      <div class="current-weather">
+        <!-- Error Message if City is Not Found -->
+        <div
+          *ngIf="errorMessage"
+          class="alert alert-danger text-center"
+          style="width: 100%; margin: 0 auto"
+        >
+          {{ errorMessage }}
+        </div>
+
+        <table *ngIf="!errorMessage" class="table w-100 table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">City ID</th>
+              <th scope="col">City Name</th>
+              <th scope="col">Forecasts</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let city of filteredCities; let i = index">
+              <td>{{ city.id }}</td>
+              <td>{{ city.city }}</td>
+              <td>
+                <a
+                  type="button"
+                  class="cc link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+                  [routerLink]="['/city', city.id]"
+                >
+                  Click For Details
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
